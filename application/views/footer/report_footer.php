@@ -11,21 +11,36 @@
 <script src="<?php echo base_url() ?>assets/plugins/pdfmake/pdfmake.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/pdfmake/vfs_fonts.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/jszip/jszip.min.js"></script>
-<<script>
+<script>
     var table = $("#table-report").DataTable({
         ajax: {
             url: "order/get_all",
             dataSrc: ''
         },
-        columns: [
-            {data: "product"},
-            {data: "name"},
-            {data: "quantity"},
-            {data: "status"},
-            {data: "start_date"},
-            {data: "end_date"},
-            {data: "actual_start"},
-            {data: "actual_finish"}
+        columns: [{
+                data: "product"
+            },
+            {
+                data: "name"
+            },
+            {
+                data: "quantity"
+            },
+            {
+                data: "status"
+            },
+            {
+                data: "start_date"
+            },
+            {
+                data: "end_date"
+            },
+            {
+                data: "actual_start"
+            },
+            {
+                data: "actual_finish"
+            }
         ],
         dom: 'lBfrtip',
         buttons: [

@@ -28,7 +28,7 @@ $products = $this->M_Product->getAll();
     <h3 class="card-title">Part List</h3>
   </div>
   <div class="card-body">
-    <div class="form-group">
+    <div class="form-group" style="overflow-x:auto;">
       <?php
       if ($this->session->user->role == "fabrication") {
       ?>

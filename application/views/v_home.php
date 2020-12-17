@@ -71,6 +71,24 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
+
+        <!-- Notifications Dropdown Menu -->
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">15</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <div class="dropdown-divider"></div>
+            <a href="<?php //echo base_url() 
+                      ?>?page=product_list" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li> -->
+
         <li class="nav-item d-none d-sm-inline-block">
           <a href="<?php echo base_url() ?>home/logout" class="nav-link">Logout</a>
         </li>
@@ -191,7 +209,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="reportNav">
               <a href="<?php echo base_url() ?>?page=report" class="nav-link">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
@@ -269,6 +287,11 @@
   ?>
 
   <script>
+    var userActive = "<?php echo $this->session->user->role ?>";
+    if (userActive == "fabrication") {
+      document.getElementById("reportNav").style.visibility = "hidden";
+    }
+
     $(".se-pre-con").fadeOut("slow");
   </script>
 

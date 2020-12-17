@@ -163,11 +163,9 @@
             str += "<li>" + data.end_date + "</li>";
         }
         str += '<li style="text-align: right; color: ' + color + ';">' + data.status + level + '</li>';
-        // console.log(data.status);
-        // console.log(level);
-        if (data.stock < data.quantity && data.status == 'waiting') {
-            str += '<li style="text-align: right; color: yellow">' + (data.stock - data.quantity) + '</li>';
-        }
+        // if (data.stock < data.quantity && data.status == 'waiting') {
+        //     str += '<li style="text-align: right; color: yellow">' + (data.stock - data.quantity) + '</li>';
+        // }
         str += "</ul>";
         str += "</li>";
         return str;

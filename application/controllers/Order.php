@@ -104,13 +104,10 @@ class Order extends CI_Controller
                 ];
             }
             $data["status"] = $status;
-            // echo $status;
             $data['done'] = 0;
-            // echo "HAHAHAHAHHA";
             if ($order->status == "waiting") {
                 $data['level'] = $component->level;
                 echo $component->level;
-                // echo "HAHAHAHAHHA";
             } else if ($order->status == "on-progress" && $status == "on-progress") {
                 if ($order->done == 0) {
                     echo "set done first";

@@ -7,7 +7,7 @@ $products = $this->M_Product->getAll();
     <h3 class="card-title">Order to Fabrication</h3>
   </div>
   <div class="card-body">
-    <div class="form-group">
+    <div class="form-group" style="overflow-x:auto;">
       <table class="table table-bordered" id="table-product-fabrication">
         <thead>
           <tr>

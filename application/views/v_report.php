@@ -1,12 +1,12 @@
 <?php
-    $footer = "report_footer.php";
+$footer = "report_footer.php";
 ?>
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Report</h3>
     </div>
     <div class="card-body">
-        <div class="form-group">
+        <div class="form-group" style="overflow-x:auto;">
             <table class="table table-bordered" id="table-report">
                 <thead>
                     <tr>
@@ -25,5 +25,5 @@
             </table>
         </div>
     </div>
-    
+
 </div>
