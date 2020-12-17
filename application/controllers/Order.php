@@ -273,6 +273,39 @@ class Order extends CI_Controller
         echo json_encode($reports);
     }
 
+    public function reportDashboard()
+    {
+        $products = $this->M_Product->getAll();
+        $reports = [];
+        foreach ($products as $product) {
+            $p = [
+                "id" => $product->id,
+                "name" => $product->name,
+                "components" => []
+            ];
+            $components = $this->M_Component->getByProductId($product->id);
+            foreach ($components as $component) {
+                $report = $this->M_Order->getReport($component->id);
+                $r = [
+                    "waiting" => 0,
+                    "on-progress" => 0,
+                    "finish" => 0
+                ];
+                foreach ($report as $re) {
+                    $r[$re->status] = intval($re->jumlah);
+                }
+                $p["components"][] = [
+                    "id" => $component->id,
+                    "name" => $component->name,
+                    "reports" => $r
+                ];
+            }
+            $reports[] = $p;
+        }
+
+        echo json_encode($reports);
+    }
+
 
     public function get_all_order_fabrication()
     {

@@ -6,22 +6,6 @@
     //- BAR CHART -
     //-------------
 
-
-
-    var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    stepSize: 1
-                }
-            }]
-        }
-    }
-
     // var barChart = new Chart(barChartCanvas, {
     //     type: 'bar', 
     //     data: [],
@@ -33,46 +17,42 @@
         method: "GET",
         success: function(data) {
             data = JSON.parse(data);
-            console.log(data);
+            // console.log(data);
             data.forEach(product => {
-                // console.log(product)
-                var dataset = [{
-                        label: 'Waiting',
-                        backgroundColor: '#ffc107',
-                        data: []
-                    },
-                    {
-                        label: 'On-Progress',
-                        backgroundColor: '#17a2b8',
-                        data: []
-                    },
-                    {
-                        label: 'Finish',
-                        backgroundColor: '#28a745',
-                        data: []
+                product.components.forEach(components => {
+                    var barChartOptions = {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        datasetFill: false,
+                        title: {
+                            display: true,
+                            text: components.name
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    stepSize: 1
+                                }
+                            }]
+                        }
                     }
-                ];
-                var labels = [];
-                product.components.forEach(component => {
-                    // Waiting
-                    dataset[0].data.push(component.reports.waiting);
-                    // console.log(component.reports.waiting);
-                    // On-Progress
-                    dataset[1].data.push(component.reports['on-progress']);
-                    // Finish
-                    dataset[2].data.push(component.reports.finish);
-                    labels.push(component.name);
-                });
-                var barChartCanvas = $('#barChart-' + product.name).get(0).getContext('2d')
-                // console.log(barChartCanvas)
-                var barChart = new Chart(barChartCanvas, {
-                    type: 'pie',
-                    data: {
-                        labels: labels,
-                        datasets: dataset,
-                        weight:2
-                    },
-                    options: barChartOptions
+                    console.log(components)
+                    var dataset = [{
+                        label: components.name,
+                        backgroundColor: ['#f74a4a', '#ffc107', '#22e342'],
+                        data: [components.reports.waiting, components.reports['on-progress'], components.reports.finish]
+                    }];
+                    var barChartCanvas = $('#barChart-' + product.name + '-' + components.name).get(0).getContext('2d')
+                    // console.log(barChartCanvas)
+                    var barChart = new Chart(barChartCanvas, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["waiting", "on-progress", "finish"],
+                            datasets: dataset,
+                        },
+                        options: barChartOptions
+                    })
                 })
             });
         },
