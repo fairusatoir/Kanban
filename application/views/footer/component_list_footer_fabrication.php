@@ -5,16 +5,18 @@
 <script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script>
     var product = $("#product");
-    var table = $("#table-component").DataTable({
+    var table = $("#table-component-fabrication").DataTable({
         ajax: {
-            url: "component/get_by_product/" + product.val(),
+            url: "component/get_order_fabrication/" + product.val(),
             dataSrc: function(data) {
                 return data.map(function(component) {
                     return {
                         name: component.name,
                         alias: component.alias,
                         stock: component.stock,
-                        action: "<button class='btn btn-primary' onClick='updateStock(" + component.id + "," + component.stock + "," + '"' + component.name + '","' + component.alias + '"' + ")'>Order Stock</button>"
+                        action: component.status
+
+                        // action: "<button class='btn btn-primary' onClick='updateStock("+component.id+","+component.stock+","+'"'+component.name+'","'+component.alias+'"'+")'>Update Stock</button>"
                     }
                 });
             }
@@ -39,7 +41,7 @@
         $("#component-id").val(id);
         $("#component-name").val(name);
         $("#component-alias").val(alias);
-        // $("#component-stock").val(stock);
+        $("#component-stock").val(stock);
     }
 
     function confirmUpdate() {
@@ -47,7 +49,7 @@
         var stock = $("#component-stock").val();
         $(".se-pre-con").fadeIn("fast");
         $.ajax({
-            url: "component/orderPart",
+            url: "component/update",
             method: "POST",
             data: {
                 id: id,
@@ -72,7 +74,7 @@
     });
 
     function requestComponent(id) {
-        table.ajax.url("component/get_by_product/" + id);
+        table.ajax.url("component/get_order_fabrication/" + id);
         table.ajax.reload();
     }
 </script>

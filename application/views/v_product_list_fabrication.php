@@ -1,21 +1,21 @@
 <?php
-$footer = "product_list_footer.php";
+$footer = "product_list_footer_fabrication.php";
 $products = $this->M_Product->getAll();
 ?>
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Product List</h3>
+    <h3 class="card-title">Order to Fabrication</h3>
   </div>
   <div class="card-body">
     <div class="form-group">
-      <table class="table table-bordered" id="table-product">
+      <table class="table table-bordered" id="table-product-fabrication">
         <thead>
           <tr>
             <th>Product</th>
             <th>Component ID</th>
             <th>Quantity</th>
-            <th>Plan Start</th>
-            <th>Plan Finish</th>
+            <!-- <th>Plan Start</th>
+            <th>Plan Finish</th> -->
             <th>Status</th>
             <th>Action</th>
           </tr>

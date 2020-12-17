@@ -9,6 +9,7 @@
 <!-- date-range-picker -->
 <script src="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
 <script>
+    document.getElementById("btn-submit").disabled = true;
     var product = $("#product");
     var table = $("#table-component").DataTable({
         ajax: {
@@ -97,6 +98,8 @@
     var start_date = new Date();
     var end_date = new Date();
 
+    
+
     $("#btn-submit").on("click", function() {
         var data = [];
         for (let i = 0; i < table_cart.data().length; i++) {
@@ -133,5 +136,7 @@
         end_date = picker.endDate;
         console.log(picker.startDate.format('YYYY-MM-DD'));
         console.log(picker.endDate.format('YYYY-MM-DD'));
+        
+        document.getElementById("btn-submit").disabled = false;
     });
 </script>

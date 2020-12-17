@@ -23,7 +23,7 @@ $products = $this->M_Product->getAll();
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Component ID</th>
+                        <th>Part ID</th>
                         <th>Stock</th>
                         <th>Action</th>
                     </tr>
@@ -37,7 +37,7 @@ $products = $this->M_Product->getAll();
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Component List</h3>
+        <h3 class="card-title">Part List</h3>
     </div>
     <div class="card-body">
         <div class="form-group">
@@ -45,7 +45,7 @@ $products = $this->M_Product->getAll();
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Component ID</th>
+                        <th>Part ID</th>
                         <th>Quantity</th>
                         <th>Action</th>
                     </tr>

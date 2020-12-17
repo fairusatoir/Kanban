@@ -140,11 +140,43 @@
             <?php
             } else if ($this->session->user->role == "store") {
             ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-inbox"></i>
+                  <p>
+                    Order List
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?php echo base_url() ?>?page=component_list" class="nav-link">
+                      <i class="far fa-plus-square nav-icon"></i>
+                      <p>Order Part</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?php echo base_url() ?>?page=product_list_fabrication" class="nav-link">
+                      <i class="far fa-eye nav-icon"></i>
+                      <p>Order to Fabrication</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?php echo base_url() ?>?page=product_list" class="nav-link">
+                      <i class="far fa-eye nav-icon"></i>
+                      <p>Product List</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php
+            } else if ($this->session->user->role == "fabrication") {
+            ?>
               <li class="nav-item">
                 <a href="<?php echo base_url() ?>?page=component_list" class="nav-link">
                   <i class="nav-icon fas fa-list"></i>
                   <p>
-                    Component List
+                    Part List
                   </p>
                 </a>
               </li>

@@ -1,22 +1,21 @@
 <?php
-
-$footer = "kanban_board_footer.php";
+    $footer = "kanban_board_footer.php";
 ?>
 
 <div class="card card-primary card-outline card-outline-tabs">
     <div class="card-header p-0 border-bottom-0">
         <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Sub Assembly Store</a>
+            <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Sub Assembly Store</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Sub Assembly Aileron</a>
+            <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Sub Assembly Aileron</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Sub Assembly Elevator</a>
+            <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Sub Assembly Elevator</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-settings" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Sub Assembly Rudder</a>
+            <a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-settings" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Sub Assembly Rudder</a>
             </li>
         </ul>
     </div>
@@ -32,7 +31,7 @@ $footer = "kanban_board_footer.php";
                         </div>
                         <ul class="sortable ui-sortable" id="sort-all-todo" data-status="waiting">
                             <!-- Card -->
-
+                            
                         </ul>
                     </div>
                     <!-- Board -->
@@ -54,13 +53,13 @@ $footer = "kanban_board_footer.php";
                         </div>
                         <ul class="sortable ui-sortable" id="sort-all-done" data-status="finish">
                             <!-- Card -->
-
+                            
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-                <div class="task-board">
+            <div class="task-board">
                     <!-- Board -->
                     <div class="status-card">
                         <!-- Board title -->
@@ -115,7 +114,7 @@ $footer = "kanban_board_footer.php";
                 </div>
             </div>
             <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
-                <div class="task-board">
+            <div class="task-board">
                     <!-- Board -->
                     <div class="status-card">
                         <!-- Board title -->
@@ -128,8 +127,8 @@ $footer = "kanban_board_footer.php";
                             <li class="text-row ui-sortable-handle" data-task-id="2">Task 2</li>
                         </ul>
                     </div>
-                    <!-- Board -->
-                    <div class="status-card">
+                     <!-- Board -->
+                     <div class="status-card">
                         <!-- Board title -->
                         <div class="card-header">
                             <span class="card-header-text">Level 7</span>
@@ -172,7 +171,7 @@ $footer = "kanban_board_footer.php";
                 </div>
             </div>
             <div class="tab-pane fade" id="custom-tabs-three-settings" role="tabpanel" aria-labelledby="custom-tabs-three-settings-tab">
-                <div class="task-board">
+            <div class="task-board">
                     <!-- Board -->
                     <div class="status-card">
                         <!-- Board title -->
@@ -219,3 +218,6 @@ $footer = "kanban_board_footer.php";
         </div>
     </div>
 </div>
+
+
+

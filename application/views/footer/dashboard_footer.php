@@ -35,6 +35,7 @@
             data = JSON.parse(data);
             console.log(data);
             data.forEach(product => {
+                // console.log(product)
                 var dataset = [{
                         label: 'Waiting',
                         backgroundColor: '#ffc107',
@@ -55,6 +56,7 @@
                 product.components.forEach(component => {
                     // Waiting
                     dataset[0].data.push(component.reports.waiting);
+                    // console.log(component.reports.waiting);
                     // On-Progress
                     dataset[1].data.push(component.reports['on-progress']);
                     // Finish
@@ -62,11 +64,13 @@
                     labels.push(component.name);
                 });
                 var barChartCanvas = $('#barChart-' + product.name).get(0).getContext('2d')
+                // console.log(barChartCanvas)
                 var barChart = new Chart(barChartCanvas, {
                     type: 'pie',
                     data: {
                         labels: labels,
-                        datasets: dataset
+                        datasets: dataset,
+                        weight:2
                     },
                     options: barChartOptions
                 })

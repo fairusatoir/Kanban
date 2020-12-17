@@ -2,6 +2,13 @@
 <script src="<?php echo base_url() ?>assets/plugins/jquery-ui/jquery-ui.js"></script>
 
 <script>
+    var userActive = "<?php echo $this->session->user->role ?>";
+    if (userActive == "fabrication") {
+        document.getElementById("custom-tabs-three-profile-tab").style.visibility = "hidden";
+        document.getElementById("custom-tabs-three-messages-tab").style.visibility = "hidden";
+        document.getElementById("custom-tabs-three-settings-tab").style.visibility = "hidden";
+    }
+
     var todo = {
         Elevator: [],
         Aileron: [],
@@ -28,6 +35,7 @@
         receive: function(e, ui) {
             var status_id = $(ui.item).parent(".sortable").data("status");
             var level;
+            var userActive = "<?php echo $this->session->user->role ?>";
             if (status_id == "on-progress") {
                 level = $(ui.item).parent(".sortable").data('level');
             }
@@ -44,7 +52,8 @@
                 data: {
                     id: task_id,
                     status: status_id,
-                    level: level
+                    level: level,
+                    user: userActive
                 },
                 success: function(data) {
                     console.log(data);
@@ -76,26 +85,49 @@
             Rudder: [],
             all: []
         };
-        $.ajax({
-            url: "order/get_all",
-            method: "GET",
-            success: function(data) {
-                data = $.parseJSON(data);
-                for (let i = 0; i < data.length; i++) {
-                    if (data[i].status == 'waiting') {
-                        todo[data[i].product].push(data[i]);
-                        todo.all.push(data[i]);
-                    } else if (data[i].status == 'on-progress') {
-                        doing[data[i].product].push(data[i]);
-                        doing.all.push(data[i]);
-                    } else {
-                        done[data[i].product].push(data[i]);
-                        done.all.push(data[i]);
+        if (userActive !== "fabrication") {
+            $.ajax({
+                url: "order/get_all",
+                method: "GET",
+                success: function(data) {
+                    data = $.parseJSON(data);
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i].status == 'waiting') {
+                            todo[data[i].product].push(data[i]);
+                            todo.all.push(data[i]);
+                        } else if (data[i].status == 'on-progress') {
+                            doing[data[i].product].push(data[i]);
+                            doing.all.push(data[i]);
+                        } else {
+                            done[data[i].product].push(data[i]);
+                            done.all.push(data[i]);
+                        }
                     }
+                    populateData();
                 }
-                populateData();
-            }
-        });
+            });
+        } else {
+            $.ajax({
+                url: "order/get_all_order_fabrication",
+                method: "GET",
+                success: function(data) {
+                    data = $.parseJSON(data);
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i].status == 'waiting') {
+                            todo[data[i].product].push(data[i]);
+                            todo.all.push(data[i]);
+                        } else if (data[i].status == 'on-progress') {
+                            doing[data[i].product].push(data[i]);
+                            doing.all.push(data[i]);
+                        } else {
+                            done[data[i].product].push(data[i]);
+                            done.all.push(data[i]);
+                        }
+                    }
+                    populateData();
+                }
+            });
+        }
     }
 
     function createCard(data) {
@@ -126,8 +158,10 @@
         str += "<li>" + data.name + "</li>";
         // str    +=        "<li>"+data.alias+"</li>";
         str += "<li>" + data.quantity + "</li>";
-        str += "<li>" + data.start_date + "</li>";
-        str += "<li>" + data.end_date + "</li>";
+        if (userActive !== "fabrication") {
+            str += "<li>" + data.start_date + "</li>";
+            str += "<li>" + data.end_date + "</li>";
+        }
         str += '<li style="text-align: right; color: ' + color + ';">' + data.status + level + '</li>';
         // console.log(data.status);
         // console.log(level);
