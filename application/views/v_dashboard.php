@@ -30,11 +30,12 @@ $footer = "dashboard_footer.php";
             <?php
             }
             ?>
+
         </div>
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
-
+    <hr>
     <!-- BAR CHART -->
     <div class="card card-success">
         <div class="card-header">
@@ -42,13 +43,23 @@ $footer = "dashboard_footer.php";
         </div>
         <div class="card-body">
             <div class="chart">
-                <canvas id="barChart-Elevator" style="height:230px; min-height:230px"></canvas>
+                <?php
+                $componentNames = $this->M_Component->getByProductId(3);
+                foreach ($componentNames as $componentName) {
+                    $idName = "barChart-Elevator-" . $componentName->name;
+                ?>
+                    <div class="chart">
+                        <canvas id=<?php echo $idName ?> style="height:230px; min-height:230px"></canvas>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
-
+    <hr>
     <!-- BAR CHART -->
     <div class="card card-danger">
         <div class="card-header">
@@ -56,7 +67,17 @@ $footer = "dashboard_footer.php";
         </div>
         <div class="card-body">
             <div class="chart">
-                <canvas id="barChart-Rudder" style="height:230px; min-height:230px"></canvas>
+                <?php
+                $componentNames = $this->M_Component->getByProductId(2);
+                foreach ($componentNames as $componentName) {
+                    $idName = "barChart-Rudder-" . $componentName->name;
+                ?>
+                    <div class="chart">
+                        <canvas id=<?php echo $idName ?> style="height:230px; min-height:230px"></canvas>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <!-- /.card-body -->
