@@ -123,7 +123,7 @@ class Order extends CI_Controller
                     echo "<";
                     echo $order->level;
                     $data['level'] = $level;
-                    echo $data['level'] + "level";
+                    // echo $data['level'] + "level";
                 } else {
                     echo "wrong level";
                     return;

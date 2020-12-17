@@ -17,69 +17,118 @@ $footer = "dashboard_footer.php";
     <div class="card-header">
         <h3 class="card-title">Aileron</h3>
     </div>
-    <div class="card-body">
-        <div class="chart">
-            <?php
-            $componentNames = $this->M_Component->getByProductId(1);
-            foreach ($componentNames as $componentName) {
-                $idName = "barChart-Aileron-" . $componentName->name;
-            ?>
+    <?php
+    $componentNames = $this->M_Component->getByProductId(1);
+    foreach ($componentNames as $componentName) {
+        $chartName = "barChart-Aileron-" . $componentName->name;
+        $tableName = "table-Aileron-" . $componentName->name;
+    ?>
+        <div class="row">
+            <div class="card-body col-md-6">
                 <div class="chart">
-                    <canvas id=<?php echo $idName ?> style="height:230px; min-height:230px"></canvas>
+                    <canvas id=<?php echo $chartName ?> style="height:230px; min-height:230px"></canvas>
                 </div>
-            <?php
-            }
-            ?>
+            </div>
+            <div class="card-body col-md-6">
+                <table class="table table-bordered" id=<?php echo $tableName ?>>
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">no</th>
+                            <th style="width: 50%;">Status</th>
+                            <th>%</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+    <?php
+    }
+    ?>
 
-        </div>
-        <!-- /.card-body -->
+    <!-- /.card-body -->
+</div>
+
+<!-- /.card -->
+<br>
+<!-- BAR CHART -->
+<div class="card card-success">
+    <div class="card-header">
+        <h3 class="card-title">Elevator</h3>
     </div>
-    <!-- /.card -->
-    <hr>
-    <!-- BAR CHART -->
-    <div class="card card-success">
-        <div class="card-header">
-            <h3 class="card-title">Elevator</h3>
-        </div>
-        <div class="card-body">
-            <div class="chart">
-                <?php
-                $componentNames = $this->M_Component->getByProductId(3);
-                foreach ($componentNames as $componentName) {
-                    $idName = "barChart-Elevator-" . $componentName->name;
-                ?>
-                    <div class="chart">
-                        <canvas id=<?php echo $idName ?> style="height:230px; min-height:230px"></canvas>
-                    </div>
-                <?php
-                }
-                ?>
+    <?php
+    $componentNames = $this->M_Component->getByProductId(3);
+    foreach ($componentNames as $componentName) {
+        $chartName = "barChart-Elevator-" . $componentName->name;
+        $tableName = "table-Elevator-" . $componentName->name;
+    ?>
+        <div class="row">
+            <div class="card-body col-md-6">
+                <div class="chart">
+                    <canvas id=<?php echo $chartName ?> style="height:230px; min-height:230px"></canvas>
+                </div>
+            </div>
+            <div class="card-body col-md-6">
+                <table class="table table-bordered" id=<?php echo $tableName ?>>
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Status</th>
+                            <th>Perces</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- /.card-body -->
+        <hr>
+    <?php
+    }
+    ?>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+<br>
+<!-- BAR CHART -->
+<div class="card card-danger">
+    <div class="card-header">
+        <h3 class="card-title">Rudder</h3>
     </div>
-    <!-- /.card -->
-    <hr>
-    <!-- BAR CHART -->
-    <div class="card card-danger">
-        <div class="card-header">
-            <h3 class="card-title">Rudder</h3>
-        </div>
-        <div class="card-body">
-            <div class="chart">
-                <?php
-                $componentNames = $this->M_Component->getByProductId(2);
-                foreach ($componentNames as $componentName) {
-                    $idName = "barChart-Rudder-" . $componentName->name;
-                ?>
-                    <div class="chart">
-                        <canvas id=<?php echo $idName ?> style="height:230px; min-height:230px"></canvas>
-                    </div>
-                <?php
-                }
-                ?>
+    <?php
+    $componentNames = $this->M_Component->getByProductId(2);
+    foreach ($componentNames as $componentName) {
+        $chartName = "barChart-Rudder-" . $componentName->name;
+        $tableName = "table-Rudder-" . $componentName->name;
+    ?>
+        <div class="row">
+            <div class="card-body col-md-6">
+                <div class="chart">
+                    <canvas id=<?php echo $chartName ?> style="height:230px; min-height:230px"></canvas>
+                </div>
+            </div>
+            <div class="card-body col-md-6">
+                <table class="table table-bordered" id=<?php echo $tableName ?>>
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Status</th>
+                            <th>Perces</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
+        <hr>
+    <?php
+    }
+    ?>
+    <!-- /.card-body -->
+</div>
+<br>
+<!-- /.card -->

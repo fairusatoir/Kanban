@@ -1,5 +1,10 @@
 <!-- ChartJS -->
 <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 <script>
     //-------------
@@ -12,6 +17,10 @@
     //     options: barChartOptions
     // })
 
+    var nameProduct = "";
+    var nameComponen = ""
+    var dataSetTable = []
+
     $.ajax({
         url: "order/report",
         method: "GET",
@@ -19,39 +28,79 @@
             data = JSON.parse(data);
             // console.log(data);
             data.forEach(product => {
+                // console.log(product.components);
+                nameProduct = product.name;
                 product.components.forEach(components => {
+                    // console.log(components);
+
+                    nameComponen = components.name
                     var barChartOptions = {
                         responsive: true,
                         maintainAspectRatio: false,
                         datasetFill: false,
                         title: {
                             display: true,
-                            text: components.name
-                        },
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true,
-                                    stepSize: 1
-                                }
-                            }]
+                            text: nameComponen
                         }
                     }
-                    console.log(components)
+                    // console.log(components)
+                    var label = ["waiting", "on-progress", "finish"];
+                    var jum = components.reports.waiting + components.reports['on-progress'] + components.reports.finish
+                    var dataChart = [components.reports.waiting, components.reports['on-progress'], components.reports.finish];
+
                     var dataset = [{
-                        label: components.name,
+                        label: nameComponen,
                         backgroundColor: ['#f74a4a', '#ffc107', '#22e342'],
-                        data: [components.reports.waiting, components.reports['on-progress'], components.reports.finish]
+                        data: dataChart
                     }];
-                    var barChartCanvas = $('#barChart-' + product.name + '-' + components.name).get(0).getContext('2d')
-                    // console.log(barChartCanvas)
+
+                    var barChartCanvas = $('#barChart-' + nameProduct + '-' + nameComponen).get(0).getContext('2d')
                     var barChart = new Chart(barChartCanvas, {
                         type: 'doughnut',
                         data: {
-                            labels: ["waiting", "on-progress", "finish"],
+                            labels: label,
                             datasets: dataset,
                         },
                         options: barChartOptions
+                    })
+
+                    dataSetTable = [{
+                            order: 1,
+                            status: 'Waiting',
+                            percen: (components.reports.waiting / jum) * 100,
+                            total: components.reports.waiting
+                        },
+                        {
+                            order: 2,
+                            status: 'On-Progress',
+                            percen: (components.reports['on-progress'] / jum) * 100,
+                            total: components.reports['on-progress']
+                        },
+                        {
+                            order: 3,
+                            status: 'Finish',
+                            percen: (components.reports.finish / jum) * 100,
+                            total: components.reports.finish
+                        },
+                    ]
+
+                    // console.log(dataSetTable)
+
+                    var table = $('#table-' + nameProduct + '-' + nameComponen).DataTable({
+                        data: dataSetTable,
+                        columns: [{
+                                data: "order"
+                            },
+                            {
+                                data: "status"
+                            },
+                            {
+                                data: "percen"
+                            },
+                            {
+                                data: "total"
+                            }
+                        ]
                     })
                 })
             });
