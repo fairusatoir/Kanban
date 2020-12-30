@@ -64,22 +64,27 @@
                         options: barChartOptions
                     })
 
+
+                    var waiting = (components.reports.waiting / jum) * 100;
+                    var onProgress = (components.reports['on-progress'] / jum) * 100;
+                    var finish = (components.reports.finish / jum) * 100;
+
                     dataSetTable = [{
                             order: 1,
                             status: 'Waiting',
-                            percen: (components.reports.waiting / jum) * 100,
+                            percen: waiting.toFixed(2),
                             total: components.reports.waiting
                         },
                         {
                             order: 2,
                             status: 'On-Progress',
-                            percen: (components.reports['on-progress'] / jum) * 100,
+                            percen: onProgress.toFixed(2),
                             total: components.reports['on-progress']
                         },
                         {
                             order: 3,
                             status: 'Finish',
-                            percen: (components.reports.finish / jum) * 100,
+                            percen: finish.toFixed(2),
                             total: components.reports.finish
                         },
                     ]

@@ -170,7 +170,7 @@
                   <li class="nav-item">
                     <a href="<?php echo base_url() ?>?page=component_list" class="nav-link">
                       <i class="far fa-plus-square nav-icon"></i>
-                      <p>Order Part</p>
+                      <p>Stock Part</p>
                     </a>
                   </li>
                   <li class="nav-item">
