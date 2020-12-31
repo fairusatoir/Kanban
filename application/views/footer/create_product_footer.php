@@ -19,10 +19,11 @@
                 return data.map(function(item) {
                     return {
                         no: no++,
-                        name: item.alias,
                         id: item.name,
                         stock: item.stock,
-                        action: "<button class='btn btn-primary' onClick='add(" + (no - 2) + ")'>Tambah</buttom>"
+                        destination: item.destination,
+                        materialType: item.type,
+                        action: "<button class='btn btn-primary' onClick='add(" + (no - 2) + ")'>Release</buttom>"
                     }
                 });
             }
@@ -31,13 +32,16 @@
                 data: "no"
             },
             {
-                data: "name"
-            },
-            {
                 data: "id"
             },
             {
                 data: "stock"
+            },
+            {
+                data: "destination"
+            },
+            {
+                data: "materialType"
             },
             {
                 data: "action"
@@ -62,16 +66,18 @@
     });
     product.on("change", function() {
         let id = $(this).val();
-        console.log(id);
+        // console.log(id);
         requestComponent(id);
     });
 
     function add(idx) {
         var component = table.ajax.json()[idx];
-        component.qty = 0;
-        component.quantity = "<input type='number' cid='" + component.id + "' class='form-control component-qty' value='0'>";
+        // console.log(component.orderMin);
+        component.qty = component.orderMin;
+        component.quantity = "<input type='number' cid='" + component.id + "' class='form-control component-qty' value='" + component.orderMin + "' readonly>";
         component.action = "<button class='btn btn-danger'>Hapus</buttom>"
         table_cart.row.add(component).draw();
+        // console.log(table_cart.row);
 
         $(".component-qty").on("change paste keyup", function() {
             let id = $(this).attr("cid");
@@ -83,8 +89,6 @@
             }
         });
     }
-
-
 
     $("#table-cart tbody").on("click", "button.btn-danger", function() {
         table_cart.row($(this).parents("tr")).remove().draw();
@@ -98,15 +102,19 @@
     var start_date = new Date();
     var end_date = new Date();
 
-    
+
 
     $("#btn-submit").on("click", function() {
         var data = [];
+        // console.log('klik');
+        console.log(table_cart.data()[0]);
         for (let i = 0; i < table_cart.data().length; i++) {
+            // console.log(table_cart.data()[i].qty);
             data.push({
                 id: table_cart.data()[i].id,
                 qty: table_cart.data()[i].qty
             });
+            // console.log(data["qty"]);
         }
         $(".se-pre-con").fadeIn("fast");
         $.ajax({
@@ -136,7 +144,7 @@
         end_date = picker.endDate;
         console.log(picker.startDate.format('YYYY-MM-DD'));
         console.log(picker.endDate.format('YYYY-MM-DD'));
-        
+
         document.getElementById("btn-submit").disabled = false;
     });
 </script>

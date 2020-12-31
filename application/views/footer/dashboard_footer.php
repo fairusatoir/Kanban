@@ -34,6 +34,14 @@
                     // console.log(components);
 
                     nameComponen = components.name
+                    // console.log(components)
+                    var label = ["waiting", "on-progress", "finish"];
+                    var jum = components.reports.waiting + components.reports['on-progress'] + components.reports.finish
+                    // console.log(typeof(jum));
+                    var dataChart = [components.reports.waiting, components.reports['on-progress'], components.reports.finish];
+
+                    // if (jum > 0) {
+                    // console.log(nameComponen);
                     var barChartOptions = {
                         responsive: true,
                         maintainAspectRatio: false,
@@ -43,10 +51,6 @@
                             text: nameComponen
                         }
                     }
-                    // console.log(components)
-                    var label = ["waiting", "on-progress", "finish"];
-                    var jum = components.reports.waiting + components.reports['on-progress'] + components.reports.finish
-                    var dataChart = [components.reports.waiting, components.reports['on-progress'], components.reports.finish];
 
                     var dataset = [{
                         label: nameComponen,
@@ -63,6 +67,7 @@
                         },
                         options: barChartOptions
                     })
+
 
 
                     var waiting = (components.reports.waiting / jum) * 100;
@@ -107,6 +112,7 @@
                             }
                         ]
                     })
+                    // }
                 })
             });
         },

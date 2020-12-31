@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Assembly Store | Log in</title>
+  <title>Kanban | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,18 +19,19 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-    <div class="login-logo">
-    <b>Welcome To Electronic Kanban</b>
-  </div>
-      <p class="login-box-msg">Sign in to start your session</p>
 
-      <?php echo form_open('login/cek_login'); ?>
+<body class="hold-transition login-page">
+  <div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <div class="login-logo">
+          <b>Welcome To Electronic Kanban</b>
+        </div>
+        <p class="login-box-msg">Sign in to start your session</p>
+
+        <?php echo form_open('login/cek_login'); ?>
         <div class="input-group mb-3">
           <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
@@ -49,7 +50,7 @@
         </div>
         <div class="row">
           <div class="col-8">
-            
+
           </div>
           <!-- /.col -->
           <div class="col-4">
@@ -57,23 +58,24 @@
           </div>
           <!-- /.col -->
         </div>
-      </form>
-      <?php
-				//outputkan error jika ada
-		    echo $this->session->flashdata('error');
-	    ?>
+        </form>
+        <?php
+        //outputkan error jika ada
+        echo $this->session->flashdata('error');
+        ?>
+      </div>
+      <!-- /.login-card-body -->
     </div>
-    <!-- /.login-card-body -->
   </div>
-</div>
-<!-- /.login-box -->
+  <!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url() ?>assets/js/adminlte.min.js"></script>
+  <!-- jQuery -->
+  <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo base_url() ?>assets/js/adminlte.min.js"></script>
 
 </body>
+
 </html>

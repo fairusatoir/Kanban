@@ -154,15 +154,24 @@
             }
         }
         str += "<ul>";
-        str += "<li>" + data.product + "</li>";
+        str += "<li>" + data.alias + "</li>";
         str += "<li>" + data.name + "</li>";
         // str    +=        "<li>"+data.alias+"</li>";
         str += "<li>" + data.quantity + "</li>";
         if (userActive !== "fabrication") {
-            str += "<li>" + data.start_date + "</li>";
-            str += "<li>" + data.end_date + "</li>";
+            if (data.actual_start != null) {
+                str += "<li>" + data.actual_start + "</li>";
+            }
+
+            if (data.actual_finish != null) {
+                str += "<li>" + data.actual_finish + "</li>";
+            }
         }
-        str += '<li style="text-align: right; color: ' + color + ';">' + data.status + level + '</li>';
+        if (data.status != "waiting") {
+            str += '<li style="text-align: right; color: ' + color + ';">' + data.status + level + '</li>';
+        } else {
+            str += '<li style="text-align: right; color: ' + color + ';">' + "released " + level + '</li>';
+        }
         // if (data.stock < data.quantity && data.status == 'waiting') {
         //     str += '<li style="text-align: right; color: yellow">' + (data.stock - data.quantity) + '</li>';
         // }

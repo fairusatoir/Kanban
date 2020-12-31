@@ -7,12 +7,24 @@ $products = $this->M_Product->getAll();
     <h3 class="card-title">Product List</h3>
   </div>
   <div class="card-body">
+    <div class="form-group">
+      <label for="product">Product</label>
+      <select name="product-list" id="product-list" class="form-control">
+        <?php
+        foreach ($products as $product) {
+          echo "<option value='$product->id'>$product->name</option>";
+        }
+        ?>
+      </select>
+    </div>
     <div class="form-group" style="overflow-x:auto;">
       <table class="table table-bordered" id="table-product">
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Component ID</th>
+            <!-- <th>Product</th> -->
+            <th>Part Number</th>
+            <th>Part Name</th>
+            <th>NHA</th>
             <th>Quantity</th>
             <th>Plan Start</th>
             <th>Plan Finish</th>

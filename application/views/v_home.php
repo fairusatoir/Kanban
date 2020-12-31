@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>E-Kanban</title>
+  <title>E-Kanban | <?php echo ($this->session->user->nama) ?></title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
@@ -73,7 +73,7 @@
       <ul class="navbar-nav ml-auto">
 
         <!-- Notifications Dropdown Menu -->
-        <!-- <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
             <span class="badge badge-warning navbar-badge">15</span>
@@ -87,7 +87,7 @@
             </a>
             <div class="dropdown-divider"></div>
           </div>
-        </li> -->
+        </li>
 
         <li class="nav-item d-none d-sm-inline-block">
           <a href="<?php echo base_url() ?>home/logout" class="nav-link">Logout</a>
@@ -144,7 +144,7 @@
                   <li class="nav-item">
                     <a href="<?php echo base_url() ?>?page=create_product" class="nav-link">
                       <i class="far fa-plus-square nav-icon"></i>
-                      <p>Order Product</p>
+                      <p>Order List</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -201,22 +201,32 @@
             <?php
             }
             ?>
-            <li class="nav-item">
+            <?php
+            if ($this->session->user->role == "store") {
+            ?>
+              <li class="nav-item" hidden>
+              <?php
+            } else {
+              ?>
+              <li class="nav-item">
+              <?php
+            }
+              ?>
               <a href="<?php echo base_url() ?>?page=kanban_board" class="nav-link">
                 <i class="nav-icon fas fa-calendar"></i>
                 <p>
                   Kanban Board
                 </p>
               </a>
-            </li>
-            <li class="nav-item" id="reportNav">
-              <a href="<?php echo base_url() ?>?page=report" class="nav-link">
-                <i class="nav-icon fas fa-list"></i>
-                <p>
-                  Report
-                </p>
-              </a>
-            </li>
+              </li>
+              <li class="nav-item" id="reportNav">
+                <a href="<?php echo base_url() ?>?page=report" class="nav-link">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p>
+                    Report
+                  </p>
+                </a>
+              </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

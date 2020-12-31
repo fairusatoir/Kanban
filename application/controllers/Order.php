@@ -43,6 +43,7 @@ class Order extends CI_Controller
         foreach ($this->M_Order->getAll() as $row) {
             $row->start_date = (new DateTime($row->start_date))->format('d F Y');
             $row->end_date = (new DateTime($row->end_date))->format('d F Y');
+
             if ($row->actual_start != null) {
                 $row->actual_start = (new DateTime($row->actual_start))->format('d F Y');
             }
@@ -54,7 +55,32 @@ class Order extends CI_Controller
         echo json_encode($data);
     }
 
+    public function get_all_by_product($product)
+    {
+        $data = [];
+        foreach ($this->M_Order->getAllbyProduct($product) as $row) {
 
+            if ($row->end_date < $row->actual_finish) {
+                // $data["statusTime"] = "late";
+                $row->statusTime = "late";
+            } else {
+                // $data["statusTime"] = "on time";
+                $row->statusTime = "on time";
+            }
+
+            $row->start_date = (new DateTime($row->start_date))->format('d F Y');
+            $row->end_date = (new DateTime($row->end_date))->format('d F Y');
+            if ($row->actual_start != null) {
+                $row->actual_start = (new DateTime($row->actual_start))->format('d F Y');
+            }
+            if ($row->actual_finish != null) {
+                $row->actual_finish = (new DateTime($row->actual_finish))->format('d F Y');
+            }
+
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
 
     public function move()
     {
@@ -185,8 +211,6 @@ class Order extends CI_Controller
         ];
         echo $this->M_Order->update($id, $data);
     }
-
-
 
     public function delete()
     {
