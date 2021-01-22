@@ -6,10 +6,10 @@
 </div>
 <br>
 <p align="center">
-  <img src="https://badgen.net/github/closed-issues/micromatch/micromatch" alt="close">
-  <img src="https://img.shields.io/github/languages/code-size/open-sauced/open-sauced" alt="GitHub code size in bytes">
-  <a href="https://github.com/open-sauced/open-sauced/releases">
-    <img src="https://img.shields.io/github/v/release/open-sauced/open-sauced.svg?style=flat" alt="GitHub Release">
+  <img src="https://badgen.net/github/closed-issues/fairusatoir/Kanban" alt="close">
+  <img src="https://img.shields.io/github/languages/code-size/fairusatoir/Kanban" alt="GitHub code size in bytes">
+  <a href="https://github.com/fairusatoir/Kanban/releases">
+    <img src="https://img.shields.io/github/v/release/fairusatoir/Kanban.svg?style=flat" alt="GitHub Release">
   </a>
   <a href="https://twitter.com/zuhairatoir">
     <img src="https://img.shields.io/twitter/follow/saucedopen?label=Follow&style=social" alt="Twitter">
